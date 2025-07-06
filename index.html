@@ -1,22 +1,31 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sl">
 <head>
     <meta charset="UTF-8">
-    <title>AutoMate - Coming Soon</title>
+    <title>AutoMate - Prihaja kmalu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <img src="logo.png" alt="AutoMate Logo" class="logo">
         <h1>AutoMate</h1>
-        <p>🚗 We're getting ready to launch something amazing. Stay tuned!</p>
-        <form id="email-form">
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Notify Me</button>
+        <p>🚗 Pripravljamo nekaj izjemnega. Prijavi se za obvestilo!</p>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSfLA-xwCAcCCe-ZAcjmBYTpJyKJ01WgPLQw_wgvrrXciYli8Q/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            <input type="email" name="entry.1516099292" placeholder="Vnesi svoj email" required>
+            <button type="submit">Obvesti me</button>
         </form>
-        <p id="success-message" style="display:none;">Thank you! We'll be in touch.</p>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <p id="success-message" style="display:none;">✅ Hvala! Obvestili te bomo ob zagonu.</p>
     </div>
-    <script src="script.js"></script>
+    <script>
+        var submitted = false;
+        document.querySelector("form").addEventListener("submit", function(e){
+            submitted = true;
+            setTimeout(function(){
+                document.getElementById("success-message").style.display = "block";
+            }, 500);
+        });
+    </script>
 </body>
 </html>
